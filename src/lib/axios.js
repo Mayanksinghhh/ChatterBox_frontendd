@@ -1,6 +1,11 @@
 import axios from "axios";
 
+const baseURL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:5000/api" // Local backend for dev
+    : "https://chatterbox-backend-wqxi.onrender.com/api"; // Render backend for production
+
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.MODE === "development" ? "https://chatterbox-backend-wqxi.onrender.com/api" : "/api",
+  baseURL,
   withCredentials: true,
 });
